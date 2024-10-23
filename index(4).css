@@ -1,0 +1,21 @@
+.jumbotron {
+  padding-top: 4rem;
+  background-color: #e2edff;
+}
+
+#project {
+  background-color: #e2edff;
+}
+
+section {
+  padding-top: 5rem;
+}
+
+#contact {
+  background-color: #e2edff;
+}
+
+img {
+  max-width: 100%;
+  height: auto; /* Menjaga proporsi gambar */
+}
