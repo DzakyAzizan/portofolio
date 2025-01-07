@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery Filter</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      .filter-buttons {
+        margin-bottom: 20px;
+      }
+      .filter-buttons button {
+        margin-right: 10px;
+        padding: 10px 15px;
+        border: none;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+      }
+      .filter-buttons button.active {
+        background-color: #0056b3;
+      }
+      .gallery {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+      .gallery-item {
+        width: 200px;
+        height: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        text-align: center;
+        font-size: 14px;
+      }
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Gallery Filter</h1>
+    <div class="filter-buttons">
+      <button data-category="all" class="active">All</button>
+      <button data-category="illustration">Illustration</button>
+      <button data-category="graphic-design">Graphic Design</button>
+      <button data-category="photography">Photography</button>
+    </div>
+    <div class="gallery">
+      <div class="gallery-item" data-category="illustration">
+        <img src="img/ilustrasi1.jpg" width="200" height="150" />
+      </div>
+      <div class="gallery-item" data-category="graphic-design">
+        <img src="img/grafik1.jpg" width="200" height="150" />
+      </div>
+      <div class="gallery-item" data-category="photography">
+        <img src="img/Photography1.jpg" width="200" height="150" />
+      </div>
+      <div class="gallery-item" data-category="illustration">
+        <img src="img/ilustrasi2.jpg" width="200" height="150" />
+      </div>
+      <div class="gallery-item" data-category="graphic-design">
+        <img src="img/grafik2.jpg" width="200" height="150" />
+      </div>
+      <div class="gallery-item" data-category="photography">
+        <img src="img/photography2.jpg" width="200" height="150" />
+      </div>
+      <div class="gallery-item" data-category="illustration">
+        <img src="img/ilustrasi3.jpg" width="200" height="150" />
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const buttons = document.querySelectorAll(".filter-buttons button");
+        const galleryItems = document.querySelectorAll(".gallery-item");
+
+        buttons.forEach((button) => {
+          button.addEventListener("click", () => {
+            // Remove active class from all buttons
+            buttons.forEach((btn) => btn.classList.remove("active"));
+            // Add active class to the clicked button
+            button.classList.add("active");
+
+            const category = button.getAttribute("data-category");
+
+            // Show/hide gallery items based on category
+            galleryItems.forEach((item) => {
+              if (category === "all" || item.getAttribute("data-category") === category) {
+                item.classList.remove("hidden");
+              } else {
+                item.classList.add("hidden");
+              }
+            });
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
